@@ -1,0 +1,25 @@
+{
+  "name": "p2-rickrolls",
+  "version": "1.0.0",
+  "description": "Never gonna give you up. Never gonna let you down. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/220131-mehrab/p2-rickrolls.git"
+  },
+  "keywords": [
+    "Bad",
+    "ass",
+    "Angular/Spring",
+    "project"
+  ],
+  "author": "Brian, Carlos, Joanthony, Kevin and Justin G.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/220131-mehrab/p2-rickrolls/issues"
+  },
+  "homepage": "https://github.com/220131-mehrab/p2-rickrolls#readme"
+}
