@@ -1,4 +1,4 @@
-package com.revature.p2RR;
+package com.revature.p2rr;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
