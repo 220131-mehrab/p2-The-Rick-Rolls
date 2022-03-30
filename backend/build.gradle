@@ -8,6 +8,14 @@ group = 'com.revature'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+jar {
+	manifest {
+		attributes(
+			'Main-Class': 'com.revature.p2rr.Application'
+		)
+	}
+}
+
 repositories {
 	mavenCentral()
 }
@@ -17,6 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'com.h2database:h2:'
 }
 
 tasks.named('test') {
