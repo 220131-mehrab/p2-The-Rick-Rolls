@@ -11,8 +11,10 @@ import { User } from '../user';
 export class UserComponent implements OnInit {
   user: User = {
     id: 1,
-    name: 'windstorm'
+    name: 'windstorm',
   };
+
+
   constructor() { }
 
   ngOnInit(): void {

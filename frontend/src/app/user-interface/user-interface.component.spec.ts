@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyMapComponent } from './my-map.component';
+import { UserInterfaceComponent } from './user-interface.component';
 
-describe('MyMapComponent', () => {
-  let component: MyMapComponent;
-  let fixture: ComponentFixture<MyMapComponent>;
+describe('UserInterfaceComponent', () => {
+  let component: UserInterfaceComponent;
+  let fixture: ComponentFixture<UserInterfaceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MyMapComponent ]
+      declarations: [ UserInterfaceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyMapComponent);
+    fixture = TestBed.createComponent(UserInterfaceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
