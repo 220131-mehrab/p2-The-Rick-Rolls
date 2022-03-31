@@ -9,7 +9,7 @@ import { Browser, Map, map, tileLayer } from 'leaflet';
 export class MyMapComponent implements OnInit, AfterViewInit {
 
   @ViewChild('map')
-  private mapContainer: ElementRef<HTMLElement> | undefined;
+  private mapContainer!: ElementRef<HTMLElement>;
 
   constructor() { }
 
