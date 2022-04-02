@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Waypoint } from './waypoint';
 
+ 
 @Component({
   selector: 'app-waypoints',
   templateUrl: './waypoints.component.html',
