@@ -24,7 +24,6 @@ import { OsmMapComponent } from './map/map.component';
     UserInterfaceComponent,
     UserSearchComponent,
     OsmMapComponent
-
   ],
   imports: [
     BrowserModule,
