@@ -3,7 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    
     "p2-beta": {
+      
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -24,7 +26,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/", 
+                "output": "./assets/"
+             }
             ],
             "styles": [
               "src/styles.css"

@@ -55,12 +55,11 @@ export class AppComponent implements OnInit {
       //marker 
       let marker = L.marker(latLong).addTo(map);
       //add popup
-      marker.bindPopup('<b>Brian lives here</b>')
-
-      let popup = L.popup()
-    .setLatLng(latLong)
-    .setContent("Waypoint One")
-    .openOn(map);
+      // marker.bindPopup('<b>Brian lives here</b>')
+    //   let popup = L.popup()
+    // .setLatLng(latLong)
+    // .setContent("Waypoint One")
+    // .openOn(map);
     });
     this.watchPosition();
   }
