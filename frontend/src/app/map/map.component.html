@@ -1,0 +1,9 @@
+<app-osm-map>
+
+<p>map works!</p>
+<map
+[options]="options"
+(map$)="receiveMap($event)"
+(zoom$)="receiveZoom($event)"
+></map>
+</app-osm-map>

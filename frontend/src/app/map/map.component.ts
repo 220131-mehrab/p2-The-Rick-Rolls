@@ -1,19 +1,16 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Map, Control, DomUtil, ZoomAnimEvent , Layer, MapOptions, tileLayer, latLng } from 'leaflet';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @Component({
   selector: 'app-osm-map',
-  template: `<div class="map-container" leaflet
-     [leafletOptions]="options"
-     (leafletMapReady)="onMapReady($event)"
-     (leafletMapZoomEnd)="onMapZoomEnd($event)"
-    ></div>`,
+  template: `<div class="map-container" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)" ></div>`,
   styles: [`.map-container{
     width:100%;
     height:100%;
     position: inherit;
     }`]
-})
+})//<!--(leafletMapZoomEnd)="onMapZoomEnd($event)"-->
 export class OsmMapComponent implements OnInit, OnDestroy {
   @Output() map$: EventEmitter<Map> = new EventEmitter;
   @Output() zoom$: EventEmitter<number> = new EventEmitter;
@@ -27,8 +24,8 @@ export class OsmMapComponent implements OnInit, OnDestroy {
                       zoom:1,
                       center:latLng(0,0)
   };
-  public map: Map;
-  public zoom: number;
+  public map!: Map;
+  public zoom!: number;
 
   constructor() { 
   }
@@ -49,7 +46,8 @@ export class OsmMapComponent implements OnInit, OnDestroy {
   }
 
   onMapZoomEnd(e: ZoomAnimEvent) {
-    this.zoom = e.target.getZoom();
+    this.zoom = e.target.getZoom().center;
+    //this.zoom = e.center
     this.zoom$.emit(this.zoom);
   }
 }

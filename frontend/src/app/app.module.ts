@@ -11,17 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { UserInterfaceComponent } from './user-interface/user-interface.component';
-
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FormsModule } from '@angular/forms';
+import { OsmMapComponent } from './map/map.component';
 
-
-/* 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
-import { MessagesComponent } from './messages/messages.component'; 
-*/
 
 
 @NgModule({
@@ -29,7 +22,9 @@ import { MessagesComponent } from './messages/messages.component';
     AppComponent,
     UserComponent,
     UserInterfaceComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    OsmMapComponent
+
   ],
   imports: [
     BrowserModule,
@@ -40,7 +35,9 @@ import { MessagesComponent } from './messages/messages.component';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    LeafletModule,
+    FormsModule
   ],
   
   providers: [],
