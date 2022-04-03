@@ -28,17 +28,17 @@
   <p>Your favorite spots. Mapped out in one place.</p>
   <div id="map" #map></div>
   <p>
-    latitude: <span id="latitude"></span>&deg;<br />
-    longitude: <span id="longitude"></span>&deg;
+    latitude: <span id="latitude">{{ mylat }}</span>&deg;<br />
+    longitude: <span id="longitude">{{ mylon }}</span>&deg;
     </p>
-    <button id="geolocate">Where am I?</button>
+    <button id="geolocate" (click)="getPosEvent(false)">Where am I?</button>
   <app-waypoints></app-waypoints>
 </div>
 
 <script>
-  document.getElementById('geolocate').addEventListener('click', event => {
+  document.getElementById('geolocate').addEventListener('onclick', event => {
      //Use Navigator Interface to pull in user location
- if('geolocation' in navigator) {
+  if('geolocation' in navigator) {
      navigator.geolocation.getCurrentPosition(async position => { 
          const lat = position.coords.latitude;
          const lon = position.coords.longitude;
@@ -58,13 +58,17 @@
          const json = await response.json();
          console.log(json);
      }); 
- } else {
+  } else {
      console.log('geoloc. not available');
- }
+  }
 })
 
+let button = document.getElementById('geolocate');
+button.addEventListener('click', function event() {
+    button.textContent = "Go!";
+})
 </script>
-<router-outlet></router-outlet>
+<router-outlet>router-outlet</router-outlet>
 
 
 
