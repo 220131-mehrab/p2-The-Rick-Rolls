@@ -11,7 +11,9 @@ export class WaypointsComponent implements OnInit {
 
   waypoint: Waypoint = {
     id: 1,
-    name: 'Tucson'
+    name: 'Tucson',
+    lat: 0,
+    lon: 0
   };
   constructor() { }
 

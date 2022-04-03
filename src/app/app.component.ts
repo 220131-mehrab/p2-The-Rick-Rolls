@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { on } from 'events';
+//import { on } from 'events';
 //makes L layer a global js variable
 declare const L: any;
 //fix for leaflet icon marker bug
@@ -28,6 +28,8 @@ Marker.prototype.options.icon = iconDefault;
 })
 export class AppComponent implements OnInit {
   title = 'Wayfinder';
+  mylat = 0;
+  mylon = 0;
 
   ngOnInit() {
         if (!navigator.geolocation) {
@@ -41,6 +43,9 @@ export class AppComponent implements OnInit {
           console.log(
             `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
           );
+          this.mylat = position.coords.latitude;
+          this.mylon = position.coords.longitude;
+
           
           //adding leaflet map canvas to map div
           let map = L.map('map').setView(latLong, 4);
@@ -76,13 +81,13 @@ export class AppComponent implements OnInit {
           if (position.coords.latitude === desLat) {
             navigator.geolocation.clearWatch(id);
           }
-      },(err) => {
-        console.log(err);
-      },{
-        enableHighAccuracy: false,
-        timeout: 5000,
-        //set to 0 so device cant return cached postion
-        maximumAge: 0
-      })
-    }
+        },(err) => {
+          console.log(err);
+        },{
+          enableHighAccuracy: false,
+          timeout: 5000,
+          //set to 0 so device cant return cached postion
+          maximumAge: 0
+        })
+      }
   }
