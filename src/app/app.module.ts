@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WaypointsComponent } from './waypoints/waypoints.component';
+import { WayptDetailComponent } from './waypt-detail/waypt-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WaypointsComponent
+    WaypointsComponent,
+    WayptDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 <h2>Logged Waypoints</h2>
+
 <ul class="waypoints">
     <li *ngFor="let waypoint of waypoints">
         <button [class.selected]="waypoint === selectedWaypoint" type="button" (click)="onSelect(waypoint)">
@@ -8,12 +9,5 @@
     </li>
 </ul>
 
-<div *ngIf="selectedWaypoint">
-<h2>{{selectedWaypoint.name | uppercase}}</h2>
-<div>id: {{selectedWaypoint.id}}</div>
-<div><span>name: </span>{{selectedWaypoint.name}}</div>
-<div>
-    <label for="waypoint-name">Waypoint:</label>
-    <input id="name" [(ngModel)]="selectedWaypoint.name" placeholder="waypoint">
-</div>
-</div>
+<app-waypt-detail [waypoint]="selectedWaypoint"></app-waypt-detail>
+
