@@ -1,6 +1,6 @@
 export interface Waypoint {
     id: number;
-    x: number;
-    y: number;
-    userId: number;
-  }
+    name: string;
+    //lat: number;
+    //lon: number;
+}
