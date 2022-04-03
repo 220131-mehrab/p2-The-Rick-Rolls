@@ -30,13 +30,15 @@ export class AppComponent implements OnInit {
   title = 'Wayfinder';
   mylat = 0;
   mylon = 0;
+  firsttime = true;
 
   ngOnInit(): void {
-      //this.event();
+      this.getPosEvent(this.firsttime);
   }
 
-  event() {
-    console.log("I pressed the button.")
+  getPosEvent(firsttime: boolean) {
+    
+    console.log("I'm stating the event.")
     if (!navigator.geolocation) {
       console.log('sorry, cant find you!');
     }else{
@@ -51,22 +53,26 @@ export class AppComponent implements OnInit {
         this.mylat = position.coords.latitude;
         this.mylon = position.coords.longitude;
 
-        
+        //if (L.map()){console.log(`first time`);}
         //adding leaflet map canvas to map div
-        let map = L.map('map').setView(latLong, 4);
-        //adds map layer to leaflet canvas, include access token here
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnJpYW4xMzQ4IiwiYSI6ImNrNzlqcjl3NjB1MHkzZG10bjBscnp4NmgifQ.vieWJC5E5Odyimr9smQaIQ', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'your.mapbox.access.token'
-        }).addTo(map);
+        if (firsttime){
+          let map = L.map('map').setView(latLong, 4);
+          console.log("After");
+          firsttime = false;
+        
+          //adds map layer to leaflet canvas, include access token here
+          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnJpYW4xMzQ4IiwiYSI6ImNrNzlqcjl3NjB1MHkzZG10bjBscnp4NmgifQ.vieWJC5E5Odyimr9smQaIQ', {
+              attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: 'your.mapbox.access.token'
+          }).addTo(map);
 
         //marker 
         let marker = L.marker(latLong).addTo(map);
-        //add popup
+         }       //add popup
         // marker.bindPopup('<b>Brian lives here</b>')
       //   let popup = L.popup()
       // .setLatLng(latLong)
@@ -74,7 +80,7 @@ export class AppComponent implements OnInit {
       // .openOn(map);
       });
     }
-    this.watchPosition();
+    //this.watchPosition();
   }
 
 
@@ -85,7 +91,9 @@ export class AppComponent implements OnInit {
       console.log(
       `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
       );
+      
       if (position.coords.latitude === desLat) {
+        console.log(`clearing watch.`);
         navigator.geolocation.clearWatch(id);
       }
     },(err) => {
