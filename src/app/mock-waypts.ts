@@ -1,6 +1,6 @@
-import { Waypoint } from './waypoints/waypoint';
+import { Waypoint } from './waypoint';
 
-export const WAYPOINTS: Waypoint[] = [
+export const WAYPTS: Waypoint[] = [
   { id: 11, name: 'Los Angeles' },
   { id: 12, name: 'Phoenix' },
   { id: 13, name: 'New York City' },

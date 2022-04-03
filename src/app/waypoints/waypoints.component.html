@@ -1,8 +1,19 @@
+<h2>Logged Waypoints</h2>
+<ul class="waypoints">
+    <li *ngFor="let waypoint of waypoints">
+        <button [class.selected]="waypoint === selectedWaypoint" type="button" (click)="onSelect(waypoint)">
+            <span class= "badge">{{waypoint.id}}</span>
+            <span class="name">{{waypoint.name}}</span>
+        </button>
+    </li>
+</ul>
 
-<h2>{{waypoint.name | uppercase}}</h2>
-<div><span>id: </span>{{waypoint.id}}</div>
-<div><span>name: </span>{{waypoint.name}}</div>
+<div *ngIf="selectedWaypoint">
+<h2>{{selectedWaypoint.name | uppercase}}</h2>
+<div>id: {{selectedWaypoint.id}}</div>
+<div><span>name: </span>{{selectedWaypoint.name}}</div>
 <div>
-    <label for="name">Waypoint:</label>
-    <input id="name" [(ngModel)]="waypoint.name" placeholder="waypoint">
+    <label for="waypoint-name">Waypoint:</label>
+    <input id="name" [(ngModel)]="selectedWaypoint.name" placeholder="waypoint">
+</div>
 </div>

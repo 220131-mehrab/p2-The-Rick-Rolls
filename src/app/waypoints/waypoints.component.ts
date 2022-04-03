@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Waypoint } from './waypoint';
-
- 
+import { Waypoint } from '../waypoint';
+import { WAYPTS } from '../mock-waypts';
 @Component({
   selector: 'app-waypoints',
   templateUrl: './waypoints.component.html',
@@ -9,13 +8,16 @@ import { Waypoint } from './waypoint';
 })
 export class WaypointsComponent implements OnInit {
 
-  waypoint: Waypoint = {
-    id: 1,
-    name: 'Tucson'
-  };
+  waypoints = WAYPTS;
+  selectedWaypoint?: Waypoint;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelect(waypoint: Waypoint): void {
+    this.selectedWaypoint = waypoint;
   }
 
 }
