@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 declare const L: any;
 //fix for leaflet icon marker bug
 import { icon, Marker } from 'leaflet';
+import { Waypoint } from './waypoint';
+import { WayptService } from './waypt.service';
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -32,6 +34,10 @@ export class AppComponent implements OnInit {
   mylon = 0;
   firsttime = true;
 
+  constructor(private waypointService: WayptService) {
+
+  }
+
   ngOnInit(): void {
       this.getPosEvent(this.firsttime);
   }
@@ -50,6 +56,23 @@ export class AppComponent implements OnInit {
         console.log(
           `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
         );
+
+        // Carlos working off brian's/kevin's code ==========================================================
+        let waypointName: string = (document.getElementById('waypointName') as HTMLInputElement).value;
+
+        let newWaypoint: Waypoint = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+          id: undefined,
+          name: waypointName
+        };
+
+        console.log(newWaypoint);
+
+        this.waypointService.addWaypoint(newWaypoint);
+
+        //===================================================================================================
+
         this.mylat = position.coords.latitude;
         this.mylon = position.coords.longitude;
 

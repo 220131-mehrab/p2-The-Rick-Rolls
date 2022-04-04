@@ -24,9 +24,11 @@ services:
       - 8081:8081
   ui:
     container_name: ui
+    depends_on:
+      - db
     image: nginx
     restart: always
     volumes:
-      - ./frontend/dist/p2-angular:/usr/share/nginx/html:ro
+      - ./frontend/dist/p2-beta:/usr/share/nginx/html:ro
     ports:
       - 80:80
