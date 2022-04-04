@@ -10,5 +10,13 @@ export class WayptService {
     return WAYPTS;
   }
 
+<<<<<<< HEAD
+=======
+  addWaypoint(wp: Waypoint) {
+    console.log("adding waypoint");
+    WAYPTS.push(wp);
+  }
+
+>>>>>>> karlos
   constructor() { }
 }
