@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 //import { on } from 'events';
+
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
+import { Waypoint }from './Waypoint';
+
+
 //makes L layer a global js variable
 declare const L: any;
 //fix for leaflet icon marker bug
@@ -31,11 +41,37 @@ export class AppComponent implements OnInit {
   mylat = 0;
   mylon = 0;
   firsttime = true;
+  wpt: Waypoint = {
+    id: undefined,
+    name: 'name',
+    lat: 0,
+    long: 0};
+  waypointurl = "/waypoint";
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit(): void {
       this.getPosEvent(this.firsttime);
   }
+  
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
 
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+  
   getPosEvent(firsttime: boolean) {
     
     console.log("I'm stating the event.")
@@ -52,6 +88,11 @@ export class AppComponent implements OnInit {
         );
         this.mylat = position.coords.latitude;
         this.mylon = position.coords.longitude;
+        this.wpt = {id: undefined,name: 'name',lat: position.coords.latitude, long: position.coords.longitude };
+
+        this.http.post<Waypoint>(this.waypointurl, this.wpt, this.httpOptions).pipe(
+          tap((newWpt: Waypoint) => console.log(`added hero w/ id=${newWpt.id}`)),
+          catchError(this.handleError<Waypoint>('addHero')));
 
         //if (L.map()){console.log(`first time`);}
         //adding leaflet map canvas to map div
@@ -69,16 +110,16 @@ export class AppComponent implements OnInit {
               zoomOffset: -1,
               accessToken: 'your.mapbox.access.token'
           }).addTo(map);
-
+        
         //marker 
         let marker = L.marker(latLong).addTo(map);
-         }       //add popup
+        }       //add popup
         // marker.bindPopup('<b>Brian lives here</b>')
       //   let popup = L.popup()
       // .setLatLng(latLong)
       // .setContent("Waypoint One")
       // .openOn(map);
-      });
+    });
     }
     //this.watchPosition();
   }
@@ -105,6 +146,6 @@ export class AppComponent implements OnInit {
       maximumAge: 0
     })
   }
-
-
 }
+
+ 

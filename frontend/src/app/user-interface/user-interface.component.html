@@ -1,1 +1,12 @@
 <p>user-interface works!</p>
+<div *ngIf="user && waypoint">
+
+    <h2>{{waypoint.name | uppercase}}</h2>
+    <div>id: {{waypoint.id}}</div>
+    <div><span>name: </span>{{waypoint.name}}</div>
+    <div>
+        <label for="waypoint-name">Waypoint:</label>
+        <input id="waypoint-name" [(ngModel)]="waypoint.name" placeholder="waypoint">
+    </div>
+
+</div>
