@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
 
         console.log(newWaypoint);
 
-        this.waypointService.addWaypoint(newWaypoint);
+        this.waypointService.addWaypoint(newWaypoint).subscribe();
 
         //===================================================================================================
 
