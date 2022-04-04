@@ -1,0 +1,14 @@
+<h2>Logged Waypoints</h2>
+
+<ul class="waypoints">
+    <button (click)="reloadWaypoints()">Reload Waypoints</button>
+    <li *ngFor="let waypoint of waypoints">
+        <button [class.selected]="waypoint === selectedWaypoint" type="button" (click)="onSelect(waypoint)">
+            <span class= "badge">{{waypoint.id}}</span>
+            <span class="name">{{waypoint.name}}</span>
+        </button>
+    </li>
+</ul>
+
+<app-waypt-detail [waypoint]="selectedWaypoint"></app-waypt-detail>
+

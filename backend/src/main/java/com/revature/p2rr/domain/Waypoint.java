@@ -28,14 +28,19 @@ public class Waypoint {
     @JoinColumn(name = "user_id")
     private User parentUser;
 
+    // waypoint name
+    @Column(name = "name")
+    private String name;
+
     public Waypoint() {
     }
     
-    public Waypoint(int id, double latitude, double longitude, User user_id) {
+    public Waypoint(int id, double latitude, double longitude, User user_id, String name) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
         this.parentUser = user_id;
+        this.name = name;
     }
 
     public int getId() {
@@ -62,13 +67,19 @@ public class Waypoint {
         this.longitude = longitude;
     }
 
-    public User getUser_id() {
+    public User getParentUser() {
         return parentUser;
     }
 
-    public void setUser_id(User user_id) {
+    public void setParentUser(User user_id) {
         this.parentUser = user_id;
     }
 
-    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
