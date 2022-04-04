@@ -1,7 +1,0 @@
-@import "../node_modules/leaflet/dist/leaflet.css";
-
-#map { 
-    height: 300px;
-    width: 100vh; 
-    margin: auto;
-}
